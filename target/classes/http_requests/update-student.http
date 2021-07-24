@@ -1,0 +1,7 @@
+PUT http://localhost:8080/api/v1/student/1?name=tupac
+content-type: application/json
+
+###
+
+PUT http://localhost:8080/api/v1/student/1?name=biggy&email=biggy@big-stones.com
+content-type: application/json
