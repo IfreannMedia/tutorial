@@ -2,8 +2,6 @@ package com.amigoscode.tutorial.student;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,14 +39,11 @@ public class StudentController {
         this.studentService.deleteStudent(studentId);
     }
 
-    // @Transactional
-    // public void updateStudent(@RequestBody Student student){
-    // this.studentService.updateStudent(student);
-    // }
-
     @PutMapping(path = "{studentId}")
     public void updateStudentById(@PathVariable("studentId") Long studentId, @RequestParam(required = false) String name,
             @RequestParam(required = false) String email) {
         this.studentService.updateStudent(studentId, name, email);
     }
 }
+
+
