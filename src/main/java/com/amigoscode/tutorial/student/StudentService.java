@@ -3,6 +3,7 @@ package com.amigoscode.tutorial.student;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,10 @@ public class StudentService {
 	}
 
 	public void addNewStudent(Student student) {
-		System.out.println(student);
+		Optional<Student> studentOptional = this.studentRepository.findStudentByEmail(student.getEmail());
+		if (studentOptional.isPresent()) {
+			throw new IllegalStateException("email taken");
+		}
+		this.studentRepository.save(student);
 	}
 }
